@@ -1,0 +1,36 @@
+@media screen and (min-width: 768px) {
+    /*navbar cube*/
+    .scene {
+        perspective: 1000px;
+        position: relative;
+        height: 20px;
+        width: 100px;
+    }
+    .cube {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+        transition: 0.8s;
+    }
+    .wall {
+        position: absolute;
+    }
+    div.front {
+        transform: translateZ(10px);
+    }
+    div.bottom {
+        transform: rotateX(-90deg) translateZ(10px);
+        border-bottom: black 2px solid;
+    }
+    .cube:hover {
+        transform: rotateX(90deg);
+        transition: 1s;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    div.bottom {
+        display: none;
+    }
+}

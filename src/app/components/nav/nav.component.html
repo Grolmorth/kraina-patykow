@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-md bg-light navbar-light ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu">
+  <span class="navbar-toggler-icon"></span>
+</button>
+    <div class="collapse navbar-collapse justify-content-center m-auto" id="mainmenu">
+
+        <ul class="navbar-nav" *ngFor="let link of navlinks">
+            <li class="nav-item ">
+                <a class="nav-link" [routerLink]=[link[1]] routerLinkActive='active'>
+                    <nav-item [link]="link"></nav-item>
+                </a>
+            </li>
+
+
+
+        </ul>
+    </div>
+</nav>
