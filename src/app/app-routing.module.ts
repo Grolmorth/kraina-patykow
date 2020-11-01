@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ContactComponent } from './components/content/contact/contact.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,7 +8,8 @@ import { ProduktyComponent } from './components/content/produkty/produkty.compon
 const routes: Routes = [
   {
     path: '',
-    component: ProduktyComponent
+    component: ProduktyComponent,
+    pathMatch:'full'
   },
   {
     path: 'produkty',
@@ -20,6 +22,10 @@ const routes: Routes = [
   {
     path: 'kontakt',
     component: ContactComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 

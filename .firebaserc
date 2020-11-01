@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "krainapatykow-3d1ae": {
+      "hosting": {
+        "krainaPatykow": [
+          "krainapatykow-3d1ae"
+        ]
+      }
+    }
+  }
+}

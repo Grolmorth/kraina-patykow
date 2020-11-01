@@ -1,0 +1,6 @@
+<div class="m3-3">
+    <p>Taka strona nie istnieje, przejdź do:</p>
+    <div *ngFor="let link of navlinks">
+        <a [routerLink]=[link[1]]>{{link[0]}}</a>
+    </div>
+</div>

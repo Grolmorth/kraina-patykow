@@ -13,6 +13,12 @@ import { NavItemDisplayComponent } from './components/nav/nav-item-display/nav-i
 import { ProduktyComponent } from './components/content/produkty/produkty.component';
 import { GalleryComponent } from './components/content/gallery/gallery.component';
 import { ContactComponent } from './components/content/contact/contact.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProduktyDisplayComponent } from './components/content/produkty/produkty-display/produkty-display.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,13 +30,17 @@ import { ContactComponent } from './components/content/contact/contact.component
     NavItemDisplayComponent,
     ProduktyComponent,
     GalleryComponent,
-    ContactComponent
+    ContactComponent,
+    PageNotFoundComponent,
+    ProduktyDisplayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
