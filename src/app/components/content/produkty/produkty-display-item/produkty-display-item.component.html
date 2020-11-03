@@ -1,0 +1,14 @@
+<mat-card class="card-item" [@fadeIn]="'in'">
+    <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>{{product.name}}</mat-card-title>
+    </mat-card-header>
+    <img class="card-image" mat-card-image src={{product.imageUrl}}>
+    <mat-card-content>
+        <p>
+            {{product.info}}
+
+        </p>
+    </mat-card-content>
+
+</mat-card>

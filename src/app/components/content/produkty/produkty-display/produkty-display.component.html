@@ -1,1 +1,23 @@
-<p>produkty-display works!</p>
+<div class="container" *ngIf="!productList">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div class="col-sm-4">
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-4 col-md-6  mb-1" *ngFor="let product of productList; index as i">
+            <app-produkty-display-item [product]="product" *delay="200*i"></app-produkty-display-item>
+
+        </div>
+
+    </div>
+</div>

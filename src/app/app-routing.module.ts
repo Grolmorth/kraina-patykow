@@ -1,19 +1,26 @@
+import { ProduktyDisplayComponent } from './components/content/produkty/produkty-display/produkty-display.component';
+
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ContactComponent } from './components/content/contact/contact.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GalleryComponent } from './components/content/gallery/gallery.component';
-import { ProduktyComponent } from './components/content/produkty/produkty.component';
+import { ProduktyCreateComponent } from './components/content/produkty/produkty-create/produkty-create.component';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: ProduktyComponent,
+    component: ProduktyDisplayComponent,
     pathMatch:'full'
   },
   {
+    path: 'dodaj',
+    component: ProduktyCreateComponent
+  },
+  {
     path: 'produkty',
-    component: ProduktyComponent
+    component: ProduktyDisplayComponent
   },
   {
     path: 'galeria',

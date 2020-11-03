@@ -2,7 +2,8 @@ export class Produkt {
   id: string;
   name: string;
   info?: string;
-  imgURL?: string;
+  category: [string];
+  imageUrl?: string;
   price?: number;
 
 }

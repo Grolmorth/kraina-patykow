@@ -1,4 +1,6 @@
+import { ProductServiceService } from 'src/app/service/product-service.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-produkty-display',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProduktyDisplayComponent implements OnInit {
 
-  constructor() { }
+  productList: any[];
 
-  ngOnInit(): void {
+
+  constructor(private service: ProductServiceService) { }
+
+  ngOnInit() {
+    this.service.getProductDetailsList();
+    this.service.productDetailList.snapshotChanges().subscribe(
+      list => {
+        this.productList = list.map(item => {
+
+          return item.payload.val();
+        });
+
+      }
+    );
+
   }
-
 }
