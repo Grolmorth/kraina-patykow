@@ -1,13 +1,13 @@
-<mat-card class="card-item" [@fadeIn]="'in'">
+<mat-card class="example-card mb-1" [@fadeIn]="'in'">
     <mat-card-header>
-        <div mat-card-avatar></div>
+        <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{product.name}}</mat-card-title>
+
     </mat-card-header>
-    <img class="card-image" mat-card-image src={{product.imageUrl}}>
+    <img class="card-image-item" mat-card-image src={{product.imageUrl}}>
     <mat-card-content>
         <p>
             {{product.info}}
-
         </p>
     </mat-card-content>
 

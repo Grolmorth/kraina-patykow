@@ -17,9 +17,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class ProduktyDisplayItemComponent {
   @Input() product: any;
-
-  constructor() { }
-
-
+  constructor() {}
 
 }

@@ -28,6 +28,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import { DelayDirective } from './directives/delay.directive';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ProduktyDisplayComponent,
     ProduktyCreateComponent,
     ProduktyDisplayItemComponent,
-    DelayDirective
+    DelayDirective,
+
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     FormsModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonToggleModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

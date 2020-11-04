@@ -14,7 +14,7 @@ export class ProduktyCreateComponent implements OnInit {
   imgSrc: string = "/assets/default-image.jpg";
   selectedImage: any = null;
 
-  categoryList: string[] = ['Zabawki', 'Kuchnie'];
+  categoryList: string[] = ['Zabawki', 'Kuchnie', 'Inne'];
   isSubmitted = false;
 
   formTemplate = new FormGroup({

@@ -10,21 +10,76 @@ import { Component, OnInit } from '@angular/core';
 export class ProduktyDisplayComponent implements OnInit {
 
   productList: any[];
+  showList: any[];
+  categoryList: string[] = ['Zabawki', 'Kuchnie', 'Inne'];
 
-
+  categoryToys: boolean = true;
+  categoryKitchen: boolean = true;
+  categoryDif: boolean = true;
   constructor(private service: ProductServiceService) { }
 
   ngOnInit() {
     this.service.getProductDetailsList();
     this.service.productDetailList.snapshotChanges().subscribe(
       list => {
-        this.productList = list.map(item => {
-
+        this.productList = this.showList = list.map(item => {
           return item.payload.val();
         });
-
       }
     );
-
+  }
+  selectCategoryToys() {
+    this.categoryToys = !this.categoryToys;
+    if (this.categoryToys === false) {
+      for (let i = 0; i < this.categoryList.length; i++) {
+        if (this.categoryList[i] === 'Zabawki') {
+          this.categoryList.splice(i,1);
+        }
+      }
+    }
+    else {
+      this.categoryList.push('Zabawki');
+    }
+    this.updateShowList();
+  }
+  selectCategoryKitchen() {
+    this.categoryKitchen = !this.categoryKitchen;
+    if (this.categoryKitchen === false) {
+      for (let i = 0; i < this.categoryList.length; i++) {
+        if (this.categoryList[i] === 'Kuchnie') {
+          this.categoryList.splice(i,1)
+        }
+      }
+    }
+    else {
+      this.categoryList.push('Kuchnie');
+    }
+    this.updateShowList();
+  }
+  selectCategoryDif() {
+    this.categoryDif = !this.categoryDif;
+    if (this.categoryDif === false) {
+      for (let i = 0; i < this.categoryList.length; i++) {
+        if (this.categoryList[i] === 'Inne') {
+          this.categoryList.splice(i,1);
+        }
+      }
+    }
+    else {
+      this.categoryList.push('Inne');
+    }
+    this.updateShowList();
+  }
+  updateShowList() {
+    this.showList = [];
+    for (let i = 0, j = 0; i < this.productList.length; i++) {
+      if (this.categoryList.includes(this.productList[i].category)) {
+        this.showList.push(this.productList[i]);
+        j++;
+      }
+    }
   }
 }
+
+
+
