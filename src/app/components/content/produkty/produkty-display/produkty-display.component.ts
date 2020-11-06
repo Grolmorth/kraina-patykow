@@ -73,7 +73,7 @@ export class ProduktyDisplayComponent implements OnInit {
   updateShowList() {
     this.showList = [];
     for (let i = 0, j = 0; i < this.productList.length; i++) {
-      if (this.categoryList.includes(this.productList[i].category)) {
+      if (!this.categoryList.includes(this.productList[i].category)) {
         this.showList.push(this.productList[i]);
         j++;
       }

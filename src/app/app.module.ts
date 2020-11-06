@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -23,12 +23,14 @@ import { environment } from '../environments/environment';
 import { ProduktyCreateComponent } from './components/content/produkty/produkty-create/produkty-create.component';
 import { ProduktyDisplayItemComponent } from './components/content/produkty/produkty-display-item/produkty-display-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSelectModule} from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { DelayDirective } from './directives/delay.directive';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -48,6 +50,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     ProduktyCreateComponent,
     ProduktyDisplayItemComponent,
     DelayDirective,
+    LoginComponent,
 
   ],
   imports: [
@@ -65,7 +68,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatSelectModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    AngularFireAuthModule,
 
   ],
   providers: [],

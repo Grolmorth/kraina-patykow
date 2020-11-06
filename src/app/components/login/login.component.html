@@ -1,0 +1,26 @@
+<div class="" *ngIf="!authService.userData as user">
+    <h3>Zaloguj</h3>
+    <div class="formGroup">
+        <mat-form-field>
+            <mat-label>Login</mat-label>
+            <input matInput type="text" class="formControl" placeholder="Login" #userName required>
+        </mat-form-field>
+    </div>
+
+    <div class="formGroup">
+        <mat-form-field>
+            <mat-label>Hasło</mat-label>
+            <input matInput type="password" class="formControl" placeholder="Hasło" #userPassword required>
+        </mat-form-field>
+    </div>
+    <div class="formGroup">
+        <button type="button" class="btn btn-primary m-1" (click)="authService.SignIn(userName.value, userPassword.value)">Zaloguj</button>
+
+    </div>
+</div>
+<div class="" *ngIf="authService.userData as user">
+    <div class="formGroup">
+        <button type="button" class="btn btn-primary m-1" (click)="authService.SignOut()">Wyloguj</button>
+        <button type="button" class="btn btn-primary m-1" routerLink="/dodaj" routerLinkActive='active'>Dodaj produkt</button>
+    </div>
+</div>
