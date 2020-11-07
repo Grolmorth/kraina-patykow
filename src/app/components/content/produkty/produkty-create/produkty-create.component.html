@@ -13,13 +13,32 @@
                 <textarea matInput required formControlName="info" placeholder="opis" class="form-control"></textarea>
             </mat-form-field>
         </div>
-        <div>
-            <input type="file" accept="image/*" #fileUploader formControlName="imageUrl" class="form-control m-3 p-1" (change)="showPreview($event)">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <input type="file" accept="image/*" #fileUploader formControlName="imageUrl" class="form-control m-3 p-1" (change)="showPreview($event)">
+                </div>
+                <div>
+                    <img [src]="imgSrc" width="300px" height="250px" (click)="fileUploader.click()">
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <input type="file" accept="image/*" #fileUploader1 formControlName="imageUrl1" class="form-control m-3 p-1" (change)="showPreview1($event)">
+                </div>
+                <div>
+                    <img [src]="imgSrc1" width="300px" height="250px" (click)="fileUploader1.click()">
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <input type="file" accept="image/*" #fileUploader2 formControlName="imageUrl2" class="form-control m-3 p-1" (change)="showPreview2($event)">
+                </div>
+                <div>
+                    <img [src]="imgSrc2" width="300px" height="250px" (click)="fileUploader2.click()">
+                </div>
+            </div>
         </div>
-        <div>
-            <img [src]="imgSrc" width="300px" height="250px" (click)="fileUploader.click()">
-        </div>
-
         <div>
 
             <mat-label class="m-3">Kategorie</mat-label>

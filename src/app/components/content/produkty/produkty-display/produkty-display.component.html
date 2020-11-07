@@ -24,14 +24,14 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="">
+<div class="grid-container">
 
-        <div class="  mb-1" *ngFor="let product of showList">
 
-            <app-produkty-display-item [product]="product"></app-produkty-display-item>
+    <div class=" grid-item mb-1" *ngFor="let product of showList">
 
-        </div>
+        <app-produkty-display-item [product]="product"></app-produkty-display-item>
+
+
 
     </div>
 </div>
