@@ -44,7 +44,6 @@ export class ProduktyCreateComponent implements OnInit {
 // uploading form with max to 3 pictures
   async onSubmit(formValue) {
     this.isSubmitted = true;
-
     if (this.formTemplate.valid) {
       let filePath = `${formValue.category}/${this.selectedImage.name}_${new Date().getTime()}`;
       const fileRef = this.storage.ref(filePath);
@@ -53,32 +52,32 @@ export class ProduktyCreateComponent implements OnInit {
           formValue['imageUrl'] = url;
           if (this.selectedImage1 === null) {
             this.productService.insertProductDetails(formValue);
+            this.resetForm();
           }
         });
       }).then(() => {
         if (this.selectedImage1 !== null) {
           let filePath1 = `${formValue.category}/${this.selectedImage1.name}_${new Date().getTime()}`;
           const fileRef1 = this.storage.ref(filePath1);
-
           this.storage.upload(filePath1, this.selectedImage1).then(() => {
             fileRef1.getDownloadURL().subscribe(url => {
               formValue['imageUrl1'] = url;
               if (this.selectedImage2 === null) {
                 this.productService.insertProductDetails(formValue);
+                this.resetForm();
               }
             });
-          })
-        };
+          });
+        }
       }).then(() => {
         if (this.selectedImage1 !== null) {
           let filePath2 = `${formValue.category}/${this.selectedImage2.name}_${new Date().getTime()}`;
           const fileRef2 = this.storage.ref(filePath2);
-
           this.storage.upload(filePath2, this.selectedImage2).then(() => {
             fileRef2.getDownloadURL().subscribe(url => {
               formValue['imageUrl2'] = url;
               this.productService.insertProductDetails(formValue);
-
+              this.resetForm();
             });
           });
         }
