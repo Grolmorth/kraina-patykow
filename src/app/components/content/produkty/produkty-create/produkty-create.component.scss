@@ -1,3 +1,9 @@
 .mat-form-field {
     display: inline;
 }
+
+[type="file"] {
+    height: 0;
+    display: none;
+    width: 0;
+}

@@ -16,7 +16,9 @@
         <div class="container">
             <div class="row m-1">
                 <div>
-                    <input type="file" accept="image/*" #fileUploader formControlName="imageUrl" class="form-control m-3 p-1" (change)="showPreview($event)">
+
+                    <input type="file" accept="image/*" #fileUploader formControlName="imageUrl" class="form-control m-3 p-1 file" (change)="showPreview($event)">
+                    <button for="file" class="m-3" mat-raised-button (click)="fileUploader.click()">Wybierz</button>
                 </div>
                 <div>
                     <img [src]="imgSrc" width="300px" height="250px" (click)="fileUploader.click()">
@@ -25,6 +27,7 @@
             <div class="row m-1" *ngIf="selectedImage!==null">
                 <div>
                     <input type="file" accept="image/*" #fileUploader1 formControlName="imageUrl1" class="form-control m-3 p-1" (change)="showPreview1($event)">
+                    <button for="file" class="m-3" mat-raised-button (click)="fileUploader1.click()">Wybierz</button>
                 </div>
                 <div>
                     <img [src]="imgSrc1" width="300px" height="250px" (click)="fileUploader1.click()">
@@ -33,6 +36,7 @@
             <div class="row m-1" *ngIf="selectedImage1!==null">
                 <div>
                     <input type="file" accept="image/*" #fileUploader2 formControlName="imageUrl2" class="form-control m-3 p-1" (change)="showPreview2($event)">
+                    <button for="file" class="m-3" mat-raised-button (click)="fileUploader2.click()">Wybierz</button>
                 </div>
                 <div>
                     <img [src]="imgSrc2" width="300px" height="250px" (click)="fileUploader2.click()">
@@ -49,8 +53,11 @@
 
 
         </div>
+        <div class="text-center">
+            <button class=" m-3 " mat-stroked-button (click)="resetForm()">Anuluj</button>
+            <button class="m-3 " mat-stroked-button type="submit" [disabled]="formTemplate.invalid">Dodaj</button>
 
-        <button class="m-3" mat-stroked-button color="Dodaj" type="submit" [disabled]="formTemplate.invalid">Dodaj</button>
+        </div>
     </form>
 </mat-card>
 <app-produkty-display></app-produkty-display>
