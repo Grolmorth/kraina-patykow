@@ -31,6 +31,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './components/login/login.component';
+import { ProduktyEditComponent } from './components/content/produkty/produkty-edit/produkty-edit.component';
 
 
 
@@ -52,6 +53,7 @@ import { LoginComponent } from './components/login/login.component';
     ProduktyDisplayItemComponent,
     DelayDirective,
     LoginComponent,
+    ProduktyEditComponent,
 
   ],
   imports: [

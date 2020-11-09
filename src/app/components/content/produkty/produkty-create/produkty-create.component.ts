@@ -29,8 +29,8 @@ export class ProduktyCreateComponent implements OnInit {
     info: new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
     imageUrl: new FormControl('', Validators.required),
-    imageUrl1: new FormControl('',),
-    imageUrl2: new FormControl('',),
+    imageUrl1: new FormControl(''),
+    imageUrl2: new FormControl(''),
     price: new FormControl(''),
 
   });
@@ -41,7 +41,7 @@ export class ProduktyCreateComponent implements OnInit {
   constructor(private productService: ProductServiceService, private storage: AngularFireStorage) {
 
   }
-// uploading form with max to 3 pictures
+  // uploading form with max to 3 pictures
   async onSubmit(formValue) {
     this.isSubmitted = true;
     if (this.formTemplate.valid) {
@@ -51,6 +51,8 @@ export class ProduktyCreateComponent implements OnInit {
         fileRef.getDownloadURL().subscribe(url => {
           formValue['imageUrl'] = url;
           if (this.selectedImage1 === null) {
+            formValue['imageRef'] = filePath;
+
             this.productService.insertProductDetails(formValue);
             this.resetForm();
           }
@@ -70,7 +72,7 @@ export class ProduktyCreateComponent implements OnInit {
           });
         }
       }).then(() => {
-        if (this.selectedImage1 !== null) {
+        if (this.selectedImage2 !== null) {
           let filePath2 = `${formValue.category}/${this.selectedImage2.name}_${new Date().getTime()}`;
           const fileRef2 = this.storage.ref(filePath2);
           this.storage.upload(filePath2, this.selectedImage2).then(() => {

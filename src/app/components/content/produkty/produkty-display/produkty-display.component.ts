@@ -23,7 +23,9 @@ export class ProduktyDisplayComponent implements OnInit {
     this.service.productDetailList.snapshotChanges().subscribe(
       list => {
         this.productList = this.showList = list.map(item => {
-          return item.payload.val();
+
+
+          return ({ key: item.payload.key, ...item.payload.val() })
         });
       }
     );
@@ -33,7 +35,7 @@ export class ProduktyDisplayComponent implements OnInit {
     if (this.categoryToys === false) {
       for (let i = 0; i < this.categoryList.length; i++) {
         if (this.categoryList[i] === 'Zabawki') {
-          this.categoryList.splice(i,1);
+          this.categoryList.splice(i, 1);
         }
       }
     }
@@ -47,7 +49,7 @@ export class ProduktyDisplayComponent implements OnInit {
     if (this.categoryKitchen === false) {
       for (let i = 0; i < this.categoryList.length; i++) {
         if (this.categoryList[i] === 'Kuchnie') {
-          this.categoryList.splice(i,1)
+          this.categoryList.splice(i, 1)
         }
       }
     }
@@ -61,7 +63,7 @@ export class ProduktyDisplayComponent implements OnInit {
     if (this.categoryDif === false) {
       for (let i = 0; i < this.categoryList.length; i++) {
         if (this.categoryList[i] === 'Inne') {
-          this.categoryList.splice(i,1);
+          this.categoryList.splice(i, 1);
         }
       }
     }
@@ -78,6 +80,9 @@ export class ProduktyDisplayComponent implements OnInit {
         j++;
       }
     }
+  }
+  deleteItem(product) {
+    this.service.deleteProduct(product);
   }
 }
 
