@@ -1,5 +1,6 @@
 import { ProductServiceService } from 'src/app/service/product-service.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ProduktyDisplayComponent implements OnInit {
   categoryToys: boolean = true;
   categoryKitchen: boolean = true;
   categoryDif: boolean = true;
-  constructor(private service: ProductServiceService) { }
+  constructor(private service: ProductServiceService, private router: Router) { }
 
   ngOnInit() {
     this.service.getProductDetailsList();
@@ -82,7 +83,18 @@ export class ProduktyDisplayComponent implements OnInit {
     }
   }
   deleteItem(product) {
-    this.service.deleteProduct(product);
+    this.service.deleteProduct(product.key);
+    this.service.deleteImage(product.imageRef);
+    if (product.imageRef1) {
+      this.service.deleteImage(product.imageRef1);
+    }
+    if (product.imageRef2) {
+      this.service.deleteImage(product.imageRef2);
+    }
+  }
+  editItem(product) {
+    this.router.navigate(['/dodaj']);
+    localStorage.setItem('productEdit', JSON.stringify(product));
   }
 }
 

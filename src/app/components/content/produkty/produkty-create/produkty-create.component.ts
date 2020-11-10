@@ -2,7 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductServiceService } from 'src/app/service/product-service.service';
-import { finalize, map } from 'rxjs/operators';
+
+export class Product {
+  name: string;
+  info: string;
+  category: string;
+  imageRef: string;
+  imageRef1?: string;
+  imageRef2?: string;
+  imageUrl: string;
+  imageUrl1?: string;
+  imageUrl2?: string;
+  key: string;
+  price?: string;
+
+}
 
 
 @Component({
@@ -18,6 +32,10 @@ export class ProduktyCreateComponent implements OnInit {
   selectedImage: any = null;
   selectedImage1: any = null;
   selectedImage2: any = null;
+  imgChange = false;
+  imgChange1 = false;
+  imgChange2 = false;
+  editProduct: Product = null;
 
 
   categoryList: string[] = ['Zabawki', 'Kuchnie', 'Inne'];
@@ -37,6 +55,18 @@ export class ProduktyCreateComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
+    this.editProduct = JSON.parse(localStorage.getItem('productEdit'));
+    if (this.editProduct) {
+      this.formTemplate.patchValue({
+        name: this.editProduct.name,
+        info: this.editProduct.info,
+        category: this.editProduct.category,
+      });
+      this.imgSrc = this.editProduct.imageUrl;
+      if (this.editProduct.imageUrl1) { this.imgSrc1 = this.editProduct.imageUrl1; }
+      if (this.editProduct.imageUrl2) { this.imgSrc2 = this.editProduct.imageUrl2; }
+
+    }
   }
   constructor(private productService: ProductServiceService, private storage: AngularFireStorage) {
 
@@ -47,12 +77,12 @@ export class ProduktyCreateComponent implements OnInit {
     if (this.formTemplate.valid) {
       let filePath = `${formValue.category}/${this.selectedImage.name}_${new Date().getTime()}`;
       const fileRef = this.storage.ref(filePath);
-      await this.storage.upload(filePath, this.selectedImage).then(() => {
+      this.storage.upload(filePath, this.selectedImage).then(() => {
         fileRef.getDownloadURL().subscribe(url => {
+          this.waitForUpload(url);
           formValue['imageUrl'] = url;
+          formValue['imageRef'] = filePath;
           if (this.selectedImage1 === null) {
-            formValue['imageRef'] = filePath;
-
             this.productService.insertProductDetails(formValue);
             this.resetForm();
           }
@@ -63,7 +93,9 @@ export class ProduktyCreateComponent implements OnInit {
           const fileRef1 = this.storage.ref(filePath1);
           this.storage.upload(filePath1, this.selectedImage1).then(() => {
             fileRef1.getDownloadURL().subscribe(url => {
+              this.waitForUpload(url);
               formValue['imageUrl1'] = url;
+              formValue['imageRef1'] = filePath1;
               if (this.selectedImage2 === null) {
                 this.productService.insertProductDetails(formValue);
                 this.resetForm();
@@ -77,16 +109,19 @@ export class ProduktyCreateComponent implements OnInit {
           const fileRef2 = this.storage.ref(filePath2);
           this.storage.upload(filePath2, this.selectedImage2).then(() => {
             fileRef2.getDownloadURL().subscribe(url => {
+              this.waitForUpload(url);
               formValue['imageUrl2'] = url;
+              formValue['imageRef2'] = filePath2;
               this.productService.insertProductDetails(formValue);
               this.resetForm();
             });
           });
         }
       });
-    }
-  }
 
+    }
+
+  }
   showPreview(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -122,6 +157,7 @@ export class ProduktyCreateComponent implements OnInit {
   }
 
   resetForm() {
+    console.log('asd')
     this.formTemplate.reset();
     this.formTemplate.setValue({
       name: '', info: '', category: '', imageUrl: '', imageUrl1: '', imageUrl2: '', price: ''
@@ -134,6 +170,30 @@ export class ProduktyCreateComponent implements OnInit {
     this.selectedImage1 = null;
     this.selectedImage2 = null;
   }
+  changeImg(change) {
+    if (change === 0) {
+      this.imgChange = true;
+    }
 
+  }
+  submitEditProduct(value) {
+
+    if (!this.imgChange) {
+      value['imageUrl'] = this.editProduct.imageUrl;
+      value['imageRef'] = this.editProduct.imageRef;
+      this.productService.insertProductDetails(value);
+      this.productService.deleteProduct(this.editProduct.key);
+    }
+
+    this.resetForm();
+    localStorage.removeItem('productEdit');
+  }
+
+  waitForUpload(value) {
+    if (!value) {
+      setInterval(() => {
+      }, 3000);
+    }
+  }
 
 }

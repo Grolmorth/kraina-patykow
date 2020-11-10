@@ -30,6 +30,7 @@
     <div class=" grid-item mb-1" *ngFor="let product of showList">
 
         <app-produkty-display-item [product]="product"></app-produkty-display-item><button (click)="deleteItem(product)">usun</button>
+        <button (click)="editItem(product)">edit</button>
 
 
 

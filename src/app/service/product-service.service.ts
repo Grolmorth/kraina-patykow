@@ -9,6 +9,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class ProductServiceService {
   productDetailList: AngularFireList<any>;
 
+
   constructor(private firebase: AngularFireDatabase, private storage: AngularFireStorage) { }
 
   insertProductDetails(productDetails) {
@@ -20,17 +21,12 @@ export class ProductServiceService {
 
   getProductDetailsList() {
     this.productDetailList = this.firebase.list('productDetails');
-
   }
-
-  deleteProduct(product) {
-    console.log(product.imageUrl)
-
-    console.log(product)
-
-    this.storage.ref(`${product.imageRef}`).delete();
-
-    this.firebase.list('productDetails/' + product.key).remove();
+  deleteImage(imageRef) {
+    this.storage.ref(imageRef).delete();
+  }
+  deleteProduct(key) {
+    this.firebase.list('productDetails/' + key).remove();
   }
 
 
