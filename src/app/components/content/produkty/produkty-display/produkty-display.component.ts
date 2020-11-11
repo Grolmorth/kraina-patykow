@@ -83,6 +83,7 @@ export class ProduktyDisplayComponent implements OnInit {
     }
   }
   deleteItem(product) {
+    console.log(product)
     this.service.deleteProduct(product.key);
     this.service.deleteImage(product.imageRef);
     if (product.imageRef1) {

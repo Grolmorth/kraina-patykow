@@ -65,7 +65,6 @@ export class ProduktyCreateComponent implements OnInit {
       this.imgSrc = this.editProduct.imageUrl;
       if (this.editProduct.imageUrl1) { this.imgSrc1 = this.editProduct.imageUrl1; }
       if (this.editProduct.imageUrl2) { this.imgSrc2 = this.editProduct.imageUrl2; }
-
     }
   }
   constructor(private productService: ProductServiceService, private storage: AngularFireStorage) {
@@ -75,49 +74,42 @@ export class ProduktyCreateComponent implements OnInit {
   async onSubmit(formValue) {
     this.isSubmitted = true;
     if (this.formTemplate.valid) {
-      let filePath = `${formValue.category}/${this.selectedImage.name}_${new Date().getTime()}`;
+      const filePath = `${formValue.category}/${this.selectedImage.name}_${new Date().getTime()}`;
       const fileRef = this.storage.ref(filePath);
-      this.storage.upload(filePath, this.selectedImage).then(() => {
+      await this.storage.upload(filePath, this.selectedImage).then(() => {
         fileRef.getDownloadURL().subscribe(url => {
-          this.waitForUpload(url);
           formValue['imageUrl'] = url;
           formValue['imageRef'] = filePath;
           if (this.selectedImage1 === null) {
-            this.productService.insertProductDetails(formValue);
-            this.resetForm();
+            this.sendAndReset(formValue);
           }
         });
-      }).then(() => {
-        if (this.selectedImage1 !== null) {
-          let filePath1 = `${formValue.category}/${this.selectedImage1.name}_${new Date().getTime()}`;
-          const fileRef1 = this.storage.ref(filePath1);
-          this.storage.upload(filePath1, this.selectedImage1).then(() => {
-            fileRef1.getDownloadURL().subscribe(url => {
-              this.waitForUpload(url);
-              formValue['imageUrl1'] = url;
-              formValue['imageRef1'] = filePath1;
-              if (this.selectedImage2 === null) {
-                this.productService.insertProductDetails(formValue);
-                this.resetForm();
-              }
-            });
-          });
-        }
-      }).then(() => {
-        if (this.selectedImage2 !== null) {
-          let filePath2 = `${formValue.category}/${this.selectedImage2.name}_${new Date().getTime()}`;
-          const fileRef2 = this.storage.ref(filePath2);
-          this.storage.upload(filePath2, this.selectedImage2).then(() => {
-            fileRef2.getDownloadURL().subscribe(url => {
-              this.waitForUpload(url);
-              formValue['imageUrl2'] = url;
-              formValue['imageRef2'] = filePath2;
-              this.productService.insertProductDetails(formValue);
-              this.resetForm();
-            });
-          });
-        }
+
       });
+      if (this.selectedImage1 !== null) {
+        const filePath = `${formValue.category}/${this.selectedImage1.name}_${new Date().getTime()}`;
+        const fileRef = this.storage.ref(filePath);
+        await this.storage.upload(filePath, this.selectedImage1).then(() => {
+          fileRef.getDownloadURL().subscribe(url => {
+            formValue['imageUrl1'] = url;
+            formValue['imageRef1'] = filePath;
+            if (this.selectedImage2 === null) {
+              this.sendAndReset(formValue);
+            }
+          });
+        });
+      }
+      if (this.selectedImage2 !== null) {
+        const filePath = `${formValue.category}/${this.selectedImage2.name}_${new Date().getTime()}`;
+        const fileRef = this.storage.ref(filePath);
+        await this.storage.upload(filePath, this.selectedImage2).then(() => {
+          fileRef.getDownloadURL().subscribe(url => {
+            formValue['imageUrl2'] = url;
+            formValue['imageRef2'] = filePath;
+            this.sendAndReset(formValue);
+          });
+        });
+      }
 
     }
 
@@ -169,6 +161,8 @@ export class ProduktyCreateComponent implements OnInit {
     this.selectedImage = null;
     this.selectedImage1 = null;
     this.selectedImage2 = null;
+
+    localStorage.removeItem('productEdit');
   }
   changeImg(change) {
     if (change === 0) {
@@ -186,14 +180,11 @@ export class ProduktyCreateComponent implements OnInit {
     }
 
     this.resetForm();
-    localStorage.removeItem('productEdit');
-  }
 
-  waitForUpload(value) {
-    if (!value) {
-      setInterval(() => {
-      }, 3000);
-    }
+  }
+  sendAndReset(formValue) {
+    this.productService.insertProductDetails(formValue);
+    this.resetForm();
   }
 
 }
