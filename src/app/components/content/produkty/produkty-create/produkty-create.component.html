@@ -4,7 +4,6 @@
             <mat-form-field class="form-group">
                 <mat-label>Nazwa</mat-label>
                 <input matInput required formControlName="name" placeholder="nazwa" class="form-control">
-
             </mat-form-field>
         </div>
         <div>
@@ -16,53 +15,45 @@
         <div class="container">
             <div class="row m-1">
                 <div>
-
                     <input type="file" accept="image/*" #fileUploader formControlName="imageUrl" class="form-control m-3 p-1 file" (change)="showPreview($event)">
-                    <button for="file" class="m-3" mat-raised-button (click)="fileUploader.click()">Wybierz</button>
-                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader.click()" (click)="changeImg(0)">Zmień</button>
-
-
+                    <button *ngIf="!editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader.click()">Wybierz</button>
+                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader.click()" (click)="changeImg(editProduct.imageRef, 0)">Zmień</button>
                 </div>
                 <div>
                     <img [src]="imgSrc" width="300px" height="250px">
                 </div>
             </div>
-            <div class="row m-1" *ngIf="imgSrc!==null">
+            <div class="row m-1" *ngIf="selectedImage!==null || editProduct">
                 <div>
                     <input type="file" accept="image/*" #fileUploader1 formControlName="imageUrl1" class="form-control m-3 p-1" (change)="showPreview1($event)">
-                    <button for="file" class="m-3" mat-raised-button (click)="fileUploader1.click()">Wybierz</button>
-
+                    <button *ngIf="!editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader1.click()">Wybierz</button>
+                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader1.click()" (click)="changeImg(editProduct.imageRef1, 1)">Zmień</button>
                 </div>
                 <div>
-                    <img [src]="imgSrc1" width="300px" height="250px" (click)="fileUploader1.click()">
+                    <img [src]="imgSrc1" width="300px" height="250px">
                 </div>
             </div>
-            <div class="row m-1" *ngIf="imgSrc1!==null">
+            <div class="row m-1" *ngIf="selectedImage1!==null ||editProduct">
                 <div>
                     <input type="file" accept="image/*" #fileUploader2 formControlName="imageUrl2" class="form-control m-3 p-1" (change)="showPreview2($event)">
-                    <button for="file" class="m-3" mat-raised-button (click)="fileUploader2.click()">Wybierz</button>
+                    <button *ngIf="!editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader2.click()">Wybierz</button>
+                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader2.click()" (click)="changeImg(editProduct.imageRef2, 2)">Zmień</button>
                 </div>
                 <div>
-                    <img [src]="imgSrc2" width="300px" height="250px" (click)="fileUploader2.click()">
+                    <img [src]="imgSrc2" width="300px" height="250px">
                 </div>
             </div>
         </div>
         <div>
-
             <mat-label class="m-3">Kategorie</mat-label>
             <mat-select formControlName="category" required placeholder="Wybierz kategorie" class="form-control">
-
                 <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
             </mat-select>
-
-
         </div>
         <div class="text-center">
             <button class=" m-3 " mat-stroked-button (click)="resetForm()">Anuluj</button>
             <button class="m-3 " *ngIf="!editProduct" mat-stroked-button (click)="onSubmit(formTemplate.value)" [disabled]="formTemplate.invalid">Dodaj</button>
             <button class="m-3 " *ngIf="editProduct" mat-stroked-button (click)="submitEditProduct(formTemplate.value)">Zmień</button>
-
-
         </div>
     </form>
 </mat-card>
