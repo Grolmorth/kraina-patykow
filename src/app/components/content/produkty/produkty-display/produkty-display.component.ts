@@ -24,8 +24,6 @@ export class ProduktyDisplayComponent implements OnInit {
     this.service.productDetailList.snapshotChanges().subscribe(
       list => {
         this.productList = this.showList = list.map(item => {
-
-
           return ({ key: item.payload.key, ...item.payload.val() })
         });
       }
@@ -83,7 +81,7 @@ export class ProduktyDisplayComponent implements OnInit {
     }
   }
   deleteItem(product) {
-    console.log(product)
+
     this.service.deleteProduct(product.key);
     this.service.deleteImage(product.imagePath0);
     if (product.imagePath1) {

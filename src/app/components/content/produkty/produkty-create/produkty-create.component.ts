@@ -1,15 +1,14 @@
-import { state } from '@angular/animations';
-import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
+
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 
 import { ProductServiceService } from 'src/app/service/product-service.service';
 
 export class Product {
+  id: number;
   name: string;
   info: string;
   category: string;
@@ -70,7 +69,6 @@ export class ProduktyCreateComponent implements OnInit {
     else { this.resetForm(); }
   }
   constructor(private productService: ProductServiceService, private storage: AngularFireStorage) {
-
   }
   // uploading form with max to 3 pictures
   async onSubmit(formValue) {
@@ -88,7 +86,6 @@ export class ProduktyCreateComponent implements OnInit {
     }
 
   }
-
   //edit product form
   async submitEditProduct(formValue) {
     this.countEditUploads();

@@ -1,0 +1,27 @@
+<div class=" grid-item mb-1" *ngIf="product">
+    <mat-card class="mb-1">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title></mat-card-title>
+
+        </mat-card-header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm m-2 gallery-item"><img class="gallery-image" mat-card-image src={{product[4]}}></div>
+                <div class="col-sm m-2 gallery-item" *ngIf="product[5]"><img class="gallery-image" mat-card-image src={{product[5]}}></div>
+                <div class="col-sm m-2 gallery-item" *ngIf="product[6]"><img class="gallery-image" mat-card-image src={{product[6]}}></div>
+
+            </div>
+        </div>
+
+
+        <mat-card-content class="card-content-item">
+            <p>
+                {{product[7]}}
+            </p>
+        </mat-card-content>
+
+    </mat-card>
+
+</div>
+{{product|json}} {{product}}

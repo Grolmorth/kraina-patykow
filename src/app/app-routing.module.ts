@@ -1,3 +1,4 @@
+import { ProduktyDisplayItemContentComponent } from './components/content/produkty/produkty-display-item-content/produkty-display-item-content.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProduktyDisplayComponent } from './components/content/produkty/produkty-display/produkty-display.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'produkty',
     component: ProduktyDisplayComponent
+  },
+  {
+    path: 'produkty/:key',
+    component: ProduktyDisplayItemContentComponent
   },
   {
     path: 'galeria',
