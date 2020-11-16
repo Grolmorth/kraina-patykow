@@ -15,32 +15,33 @@
         <div class="container">
             <div class="row m-1">
                 <div>
-                    <input type="file" accept="image/*" #fileUploader formControlName="imageUrl" class="form-control m-3 p-1 file" (change)="showPreview($event)">
+
+                    <input type="file" accept="image/*" #fileUploader formControlName="imageUrl0" class="form-control m-3 p-1 file" (change)="showPreview($event, 0)">
                     <button *ngIf="!editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader.click()">Wybierz</button>
-                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader.click()" (click)="changeImg(editProduct.imageRef, 0)">Zmień</button>
+                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader.click()" (click)="changeImg(editProduct.imagePath0, 0)">Zmień</button>
                 </div>
                 <div>
-                    <img [src]="imgSrc" width="300px" height="250px">
+                    <img [src]="imgSrc[0]" width="300px" height="250px">
                 </div>
             </div>
-            <div class="row m-1" *ngIf="selectedImage!==null || editProduct">
+            <div class="row m-1" *ngIf="selectedImage[0] || editProduct">
                 <div>
-                    <input type="file" accept="image/*" #fileUploader1 formControlName="imageUrl1" class="form-control m-3 p-1" (change)="showPreview1($event)">
+                    <input type="file" accept="image/*" #fileUploader1 formControlName="imageUrl1" class="form-control m-3 p-1" (change)="showPreview($event, 1)">
                     <button *ngIf="!editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader1.click()">Wybierz</button>
-                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader1.click()" (click)="changeImg(editProduct.imageRef1, 1)">Zmień</button>
+                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader1.click()" (click)="changeImg(editProduct.imagePath1, 1)">Zmień</button>
                 </div>
                 <div>
-                    <img [src]="imgSrc1" width="300px" height="250px">
+                    <img [src]="imgSrc[1]" width="300px" height="250px">
                 </div>
             </div>
-            <div class="row m-1" *ngIf="selectedImage1!==null ||editProduct">
+            <div class="row m-1" *ngIf="selectedImage[1] ||editProduct">
                 <div>
-                    <input type="file" accept="image/*" #fileUploader2 formControlName="imageUrl2" class="form-control m-3 p-1" (change)="showPreview2($event)">
+                    <input type="file" accept="image/*" #fileUploader2 formControlName="imageUrl2" class="form-control m-3 p-1" (change)="showPreview($event, 2)">
                     <button *ngIf="!editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader2.click()">Wybierz</button>
-                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader2.click()" (click)="changeImg(editProduct.imageRef2, 2)">Zmień</button>
+                    <button *ngIf="editProduct" for="file" class="m-3" mat-raised-button (click)="fileUploader2.click()" (click)="changeImg(editProduct.imagePath2, 2)">Zmień</button>
                 </div>
                 <div>
-                    <img [src]="imgSrc2" width="300px" height="250px">
+                    <img [src]="imgSrc[2]" width="300px" height="250px">
                 </div>
             </div>
         </div>
