@@ -24,6 +24,7 @@ export class ProduktyDisplayComponent implements OnInit {
     this.service.productDetailList.snapshotChanges().subscribe(
       list => {
         this.productList = this.showList = list.map(item => {
+          console.log(item)
           return ({ key: item.payload.key, ...item.payload.val() })
         });
       }

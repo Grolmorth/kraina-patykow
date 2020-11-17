@@ -4,6 +4,10 @@
 
 .gallery-image {
     display: block;
+    max-height: 430px;
+    width: auto;
+    max-width: 310px;
+    height: auto;
     object-fit: cover;
     transition: transform 400ms ease-out;
 }

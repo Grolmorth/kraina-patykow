@@ -9,8 +9,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     trigger('fadeIn', [
       state('in', style({ opacity: 1 })),
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(-300%) rotateY(180deg) rotateZ(90deg)' }),
-        animate(1000)
+        style({ opacity: 0, transform: 'rotateY(90deg)' }),
+        animate(500)
       ])
     ])
   ]

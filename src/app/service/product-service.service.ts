@@ -9,7 +9,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class ProductServiceService {
   productDetailList: AngularFireList<any>;
-
+  product: any
 
 
   constructor(private firebase: AngularFireDatabase, private storage: AngularFireStorage) { }
@@ -18,7 +18,8 @@ export class ProductServiceService {
     this.firebase.list('productDetails').push(productDetails);
   }
   getProduct(key) {
-   return this.firebase.list('productDetails/' + key);
+    this.product = this.firebase.object('productDetails/' + key)
+
   }
 
   getProductDetailsList() {
