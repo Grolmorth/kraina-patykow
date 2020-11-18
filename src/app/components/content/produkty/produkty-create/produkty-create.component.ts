@@ -20,6 +20,8 @@ export class Product {
   imageUrl2: string;
   key: string;
   price?: string;
+  availability?: string;
+
 
 }
 
@@ -45,10 +47,12 @@ export class ProduktyCreateComponent implements OnInit {
     name: new FormControl('', Validators.required),
     info: new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.required),
+    availability: new FormControl('', Validators.required),
     imageUrl0: new FormControl(''),
     imageUrl1: new FormControl(''),
     imageUrl2: new FormControl(''),
-    price: new FormControl(''),
+
 
   });
 
@@ -60,6 +64,8 @@ export class ProduktyCreateComponent implements OnInit {
         name: this.editProduct.name,
         info: this.editProduct.info,
         category: this.editProduct.category,
+        price: this.editProduct.price,
+        availability: this.editProduct.availability,
       });
       this.imgSrc[0] = this.editProduct.imageUrl0;
       if (this.editProduct.imageUrl1) { this.imgSrc[1] = this.editProduct.imageUrl1; }
@@ -174,7 +180,7 @@ export class ProduktyCreateComponent implements OnInit {
     console.log('resret');
     this.formTemplate.reset();
     this.formTemplate.setValue({
-      name: '', info: '', category: '', imageUrl0: '', imageUrl1: '', imageUrl2: '', price: ''
+      name: '', info: '', category: '', imageUrl0: '', imageUrl1: '', imageUrl2: '', price: '', availability: '',
     });
     this.imgSrc[0] = this.imgSrc[1] = this.imgSrc[2] = '/assets/default-image.jpg';
     this.selectedImage = [];

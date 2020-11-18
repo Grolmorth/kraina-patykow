@@ -33,6 +33,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './components/login/login.component';
 import { ProduktyEditComponent } from './components/content/produkty/produkty-edit/produkty-edit.component';
 import { ProduktyDisplayItemContentComponent } from './components/content/produkty/produkty-display-item-content/produkty-display-item-content.component';
+import { ScrollSpyDirective } from './directives/scroll-spy.directive';
 
 
 
@@ -57,6 +58,7 @@ import { ProduktyDisplayItemContentComponent } from './components/content/produk
     LoginComponent,
     ProduktyEditComponent,
     ProduktyDisplayItemContentComponent,
+    ScrollSpyDirective,
 
   ],
   imports: [

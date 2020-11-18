@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./produkty-display.component.scss']
 })
 export class ProduktyDisplayComponent implements OnInit {
+  user: any;
 
   productList: any[];
   showList: any[];
@@ -20,11 +21,11 @@ export class ProduktyDisplayComponent implements OnInit {
   constructor(private service: ProductServiceService, private router: Router) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
     this.service.getProductDetailsList();
     this.service.productDetailList.snapshotChanges().subscribe(
       list => {
         this.productList = this.showList = list.map(item => {
-          console.log(item)
           return ({ key: item.payload.key, ...item.payload.val() })
         });
       }

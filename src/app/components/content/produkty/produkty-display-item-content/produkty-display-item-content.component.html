@@ -3,19 +3,20 @@
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title class="text-center">{{product.name}}</mat-card-title>
-
+            <mat-card-subtitle>Dostępne: {{product.availability}}</mat-card-subtitle>
+            <mat-card-subtitle>Cena: {{product.price}}</mat-card-subtitle>
         </mat-card-header>
         <div class="container">
             <div class="row ">
                 <div class="col-sm m-2 gallery-item" [@fadeIn]="'in'"><img class="gallery-image m-auto " mat-card-image src={{product.imageUrl0}}></div>
-                <div class="col-sm m-2 gallery-item" *ngIf="product.imagePath1" [@fadeIn]="'in'"><img class="gallery-image mx-1 my-auto" mat-card-image src={{product.imageUrl1}}></div>
-                <div class="col-sm m-2 gallery-item" *ngIf="product.imagePath2" [@fadeIn]="'in'"><img class="gallery-image mx-1 my-auto" mat-card-image src={{product.imageUrl2}}></div>
+                <div class="col-sm m-2 gallery-item" *ngIf="product.imagePath1" [@fadeIn]="'in'"><img class="gallery-image m-auto" mat-card-image src={{product.imageUrl1}}></div>
+                <div class="col-sm m-2 gallery-item" *ngIf="product.imagePath2" [@fadeIn]="'in'"><img class="gallery-image m-auto" mat-card-image src={{product.imageUrl2}}></div>
 
             </div>
         </div>
 
 
-        <mat-card-content class="card-content-item">
+        <mat-card-content class="card-content-item m-3">
             <p>
                 {{product.info}}
             </p>
