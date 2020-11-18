@@ -1,0 +1,30 @@
+#sticky-footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin: 15px;
+    float: left;
+}
+
+a {
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    color: rgb(11, 58, 29);
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.copyright {
+    bottom: 10px;
+}

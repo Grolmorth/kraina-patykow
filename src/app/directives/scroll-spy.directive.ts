@@ -29,7 +29,6 @@ export class ScrollSpyDirective {
     }
 
     if (currentSection !== this.currentSection) {
-      console.log(currentSection)
 
       this.currentSection = currentSection;
       this.sectionChange.emit(this.currentSection);

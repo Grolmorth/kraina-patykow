@@ -12,7 +12,9 @@ export class NavComponent implements OnInit {
   navlinks = [
     ['Produkty', 'produkty'],
     ['Galeria', 'galeria'],
-    ['Kontakt', 'kontakt']
+    ['Kontakt', 'kontakt'],
+    ['O firmie', 'o-firmie'],
+    ['Jak kupować', 'jak-kupowac'],
   ];
 
   constructor() { }

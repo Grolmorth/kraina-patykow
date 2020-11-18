@@ -34,6 +34,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ProduktyEditComponent } from './components/content/produkty/produkty-edit/produkty-edit.component';
 import { ProduktyDisplayItemContentComponent } from './components/content/produkty/produkty-display-item-content/produkty-display-item-content.component';
 import { ScrollSpyDirective } from './directives/scroll-spy.directive';
+import { FooterComponent } from './components/footer/footer.component';
+import { OFirmieComponent } from './components/content/o-firmie/o-firmie.component';
+import { JakKupowacComponent } from './components/content/jak-kupowac/jak-kupowac.component';
 
 
 
@@ -59,6 +62,9 @@ import { ScrollSpyDirective } from './directives/scroll-spy.directive';
     ProduktyEditComponent,
     ProduktyDisplayItemContentComponent,
     ScrollSpyDirective,
+    FooterComponent,
+    OFirmieComponent,
+    JakKupowacComponent,
 
   ],
   imports: [

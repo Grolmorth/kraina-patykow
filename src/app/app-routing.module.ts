@@ -1,3 +1,5 @@
+import { JakKupowacComponent } from './components/content/jak-kupowac/jak-kupowac.component';
+import { OFirmieComponent } from './components/content/o-firmie/o-firmie.component';
 import { ProduktyDisplayItemContentComponent } from './components/content/produkty/produkty-display-item-content/produkty-display-item-content.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProduktyDisplayComponent } from './components/content/produkty/produkty-display/produkty-display.component';
@@ -39,6 +41,14 @@ const routes: Routes = [
   {
     path: 'kontakt',
     component: ContactComponent
+  },
+  {
+    path: 'o-firmie',
+    component: OFirmieComponent
+  },
+  {
+    path: 'jak-kupowac',
+    component: JakKupowacComponent
   },
   {
     path: '**',
