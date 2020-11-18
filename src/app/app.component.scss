@@ -13,3 +13,12 @@
 .notVisible {
     visibility: hidden;
 }
+
+#parentDiv {
+    min-height: 100%;
+    position: relative;
+}
+
+.content {
+    padding-bottom: 119px;
+}

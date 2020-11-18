@@ -1,13 +1,14 @@
-<footer id="sticky-footer" class=" py-4 bg-light text-dark-50">
+<footer id="sticky-footer" class=" py-4 bg-light text-dark-80">
     <div class="container">
         <div class="row">
             <ul class="m-auto justify-content-center">
                 <li class="justify-content-center" *ngFor="let link of navlinks"><a [routerLink]=[link[1]]>{{link[0]}}</a></li>
             </ul>
         </div>
-        <div class="container text-center copyright">
-            <small>Copyright &copy; Your Website</small>
-        </div>
+
+    </div>
+    <div class="container text-center copyright">
+        <small>Copyright &copy; Your Website</small>
     </div>
 
 </footer>
