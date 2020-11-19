@@ -16,6 +16,12 @@
     transform: scale(1.1);
 }
 
+img {
+    border: 1px solid rgb(22, 92, 43);
+    border-radius: 5px!important;
+    padding: 3px;
+}
+
 @media screen and (max-width: 800px) {
     .gallery-image {
         width: 250px

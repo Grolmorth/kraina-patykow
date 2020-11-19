@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <ul class="m-auto justify-content-center">
-                <li class=" justify-content-center" *ngFor="let link of navlinks"><a [routerLink]=[link[1]]>{{link[0]}}</a></li>
+                <li class=" justify-content-center" *ngFor="let link of navlinks index as i"><a *delay="i*100" [@fadeIn]="'in'" [routerLink]=[link[1]]>{{link[0]}}</a></li>
             </ul>
         </div>
         <div class="row justify-content-center">

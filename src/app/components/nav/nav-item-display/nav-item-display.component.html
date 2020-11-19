@@ -1,6 +1,12 @@
-<div class="scene m-2">
-    <a class="cube " [routerLink]=[link[1]] routerLinkActive='active'>
+<div class="scene">
+    <a class="cube " [routerLink]=[link[1]] routerLinkActive='active' [@fadeIn]="'in'">
         <div class="wall front">{{link[0]}}</div>
         <div class="wall bottom"><b>{{link[0]}}</b></div>
+
     </a>
+    <div class="sub-menu" *ngIf="link[2]">
+        <ul class="sub-menu-item" *ngFor="let link of link[2]">
+            <li><a [routerLink]=[link[1]]>{{link[0]}}</a></li>
+        </ul>
+    </div>
 </div>
