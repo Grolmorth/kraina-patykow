@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductServiceService } from 'src/app/service/product-service.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-produkty-display-item-content',
@@ -20,7 +21,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class ProduktyDisplayItemContentComponent implements OnInit {
   product: any;
 
-  constructor(private service: ProductServiceService, private route: ActivatedRoute) { }
+  constructor(private service: ProductServiceService, private route: ActivatedRoute, private location: Location) { }
 
 
   ngOnInit() {
@@ -30,6 +31,9 @@ export class ProduktyDisplayItemContentComponent implements OnInit {
       this.product = obj;
     })
 
+  }
+  goBack() {
+    this.location.back();
   }
 
 }

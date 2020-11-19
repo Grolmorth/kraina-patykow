@@ -28,11 +28,11 @@ const routes: Routes = [
   },
   {
     path: 'produkty',
-    component: ProduktyDisplayComponent
+    component: ProduktyDisplayComponent,
   },
   {
     path: 'produkty/:key',
-    component: ProduktyDisplayItemContentComponent
+    component: ProduktyDisplayItemContentComponent,
   },
   {
     path: 'galeria',
